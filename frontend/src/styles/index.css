@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper font-sans text-navy-900 antialiased; }
+  :focus-visible { @apply outline-none ring-2 ring-teal-500 ring-offset-2 ring-offset-paper; }
+}
+
+/* Reusable design-system building blocks */
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-teal-700 text-white hover:bg-teal-800 active:bg-teal-900; }
+  .btn-secondary { @apply btn border border-paper-line bg-white text-navy-800 hover:border-teal-300 hover:bg-teal-50; }
+  .card { @apply rounded-2xl border border-paper-line bg-paper-card shadow-card; }
+  .chip { @apply inline-flex items-center rounded-full border border-paper-line bg-white px-3 py-1.5 text-left text-sm text-navy-700 transition-colors hover:border-teal-300 hover:bg-teal-50; }
+}
+
+/* Typography for model-written Markdown (rendered as sanitized React elements, never raw HTML) */
+.prose-med { @apply text-[15px] leading-relaxed text-navy-900; }
+.prose-med h1, .prose-med h2, .prose-med h3, .prose-med h4 { @apply font-serif font-semibold text-navy-900; }
+.prose-med h1 { @apply mb-2 mt-5 text-xl; }
+.prose-med h2 { @apply mb-2 mt-5 border-b border-paper-line pb-1 text-lg; }
+.prose-med h3 { @apply mb-1.5 mt-4 text-base; }
+.prose-med h4 { @apply mb-1 mt-3 text-sm uppercase tracking-wide text-navy-600; }
+.prose-med p { @apply my-2.5; }
+.prose-med ul { @apply my-2.5 list-disc space-y-1 pl-5; }
+.prose-med ol { @apply my-2.5 list-decimal space-y-1 pl-5; }
+.prose-med li::marker { @apply text-teal-600; }
+.prose-med a { @apply text-teal-700 underline underline-offset-2 hover:text-teal-900; }
+.prose-med strong { @apply font-semibold; }
+.prose-med blockquote { @apply my-3 border-l-4 border-teal-300 bg-teal-50 px-3 py-1 text-navy-700; }
+.prose-med code { @apply rounded bg-paper-muted px-1 py-0.5 text-[13px]; }
+.prose-med pre { @apply my-3 overflow-x-auto rounded-lg bg-paper-muted p-3 text-[13px]; }
+.prose-med pre code { @apply bg-transparent p-0; }
+.prose-med table { @apply my-3 block w-full overflow-x-auto text-sm; }
+.prose-med th { @apply border border-paper-line bg-paper-muted px-2.5 py-1.5 text-left font-semibold; }
+.prose-med td { @apply border border-paper-line px-2.5 py-1.5 align-top; }
+.prose-med hr { @apply my-4 border-paper-line; }
+.prose-med > :first-child { @apply mt-0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
